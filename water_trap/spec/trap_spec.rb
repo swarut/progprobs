@@ -49,4 +49,20 @@ describe Trap do
       expect(@trap.vol([6, 3, 3, 1, 2, 4])).to eq 7
     end
   end
+
+  describe 'trap' do
+    it 'returns total trapped water volumne' do
+      # expect(@trap.trap([0,1,0,2,1,0,1,3,2,1,2,6])).to eq 9
+      # expect(@trap.trap([6,1,0,2,1,0,1,3,2,1,2,6])).to eq 47
+      # expect(@trap.trap([1,7,8])).to eq 0
+      # expect(@trap.trap([0,1,0,2,1,0,1,3,2,1,2,1])).to eq 6
+      # expect(@trap.trap([4,2,3])).to eq 1
+      # expect(@trap.trap([5,5,1,7,1,1,5,2,7,6])).to eq 23
+      # expect(@trap.trap([4,9,4,5,3,2])).to eq 1
+      # expect(@trap.trap([9,6,8,8,5,6,3])).to eq 3
+      # expect(@trap.trap()).to eq
+
+      # expect(@trap.trap([9,6,8,8,5,6,3])).to eq 3
+    end
+  end
 end

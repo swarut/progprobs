@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/trapping-rain-water/
 class Trap
   # @param {Integer[]} height
   # @return {Integer}
@@ -9,40 +10,6 @@ class Trap
     peak_indexes = peaks[:peak_indexes]
     peak_values = peaks[:peak_values]
 
-
-    res = peak_values.inject({holes: [], start_point: nil, start_point_index: nil, index: 0, current_hole: []}) do |acc, p|
-        start_point = acc[:start_point]
-        index = acc[:index]
-        if start_point
-            if p >= start_point
-                acc[:current_hole] = acc[:current_hole].push(peak_indexes[index])
-                acc[:holes] = acc[:holes].push(acc[:current_hole])
-                acc[:start_point] = nil
-
-                acc[:start_point] = peak_values[index]
-                # acc[:start_point_index] = peak_indexes[index]]
-                acc[:current_hole] = [peak_indexes[index]]
-            end
-        else
-            acc[:start_point] = peak_values[index]
-            # acc[:start_point_index] = peak_indexes[index]]
-            acc[:current_hole] = [peak_indexes[index]]
-        end
-        acc[:index] = index + 1
-        acc
-    end
-    puts "---------"
-    puts res
-    puts "---------"
-    if res[:current_hole].length == 1
-        res[:holes].push(res[:current_hole].push(peak_indexes[res[:index] - 1]))
-    end
-    puts res
-
-    ranges = res[:holes]
-    ranges.map do |range|
-        vol(height[range[0]..range[1]])
-    end.sum
   end
 
   def vol(els)
@@ -121,4 +88,48 @@ end
 #       end
 #       acc
 #   end
+# end
+
+# def trap(height)
+#   return 0 if height.length < 2
+#   peaks = get_peaks(height)
+#   puts "========================"
+#   puts peaks
+#   peak_indexes = peaks[:peak_indexes]
+#   peak_values = peaks[:peak_values]
+
+
+#   res = peak_values.inject({holes: [], start_point: nil, start_point_index: nil, index: 0, current_hole: []}) do |acc, p|
+#       start_point = acc[:start_point]
+#       index = acc[:index]
+#       if start_point
+#           if p >= start_point
+#               acc[:current_hole] = acc[:current_hole].push(peak_indexes[index])
+#               acc[:holes] = acc[:holes].push(acc[:current_hole])
+#               acc[:start_point] = nil
+
+#               acc[:start_point] = peak_values[index]
+#               # acc[:start_point_index] = peak_indexes[index]]
+#               acc[:current_hole] = [peak_indexes[index]]
+#           end
+#       else
+#           acc[:start_point] = peak_values[index]
+#           # acc[:start_point_index] = peak_indexes[index]]
+#           acc[:current_hole] = [peak_indexes[index]]
+#       end
+#       acc[:index] = index + 1
+#       acc
+#   end
+#   puts "---------"
+#   puts res
+#   puts "---------"
+#   if res[:current_hole].length == 1
+#       res[:holes].push(res[:current_hole].push(peak_indexes[res[:index] - 1]))
+#   end
+#   puts res
+
+#   ranges = res[:holes]
+#   ranges.map do |range|
+#       vol(height[range[0]..range[1]])
+#   end.sum
 # end
