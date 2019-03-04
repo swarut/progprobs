@@ -31,5 +31,15 @@ defmodule WaterTrap do
     end)
   end
 
+  def trap(list) do
+    max = Enum.max(list)
+
+    0..(max - 1)
+    |> Enum.to_list()
+    |> Enum.reduce(0, fn(i, acc) ->
+      acc + count_inbetween_zero(slice_pane(list, i))
+    end)
+  end
+
 
 end
