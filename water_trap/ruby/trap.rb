@@ -3,13 +3,58 @@ class Trap
   # @param {Integer[]} height
   # @return {Integer}
   def trap(height)
-    return 0 if height.length < 2
+    return 0 if height.length <= 2
     peaks = get_peaks(height)
-    puts "========================"
+    puts "======================== PEAK"
     puts peaks
+    puts "======================== PEAK"
     peak_indexes = peaks[:peak_indexes]
     peak_values = peaks[:peak_values]
 
+    data = peak_indexes.zip(peak_values)
+    data = data.map { |d| {index: d[0], value: d[1]}}
+
+    return 0 if data.length == 0
+
+    holes = []
+    i = 0
+
+    loop do
+      break if data.length == 1
+      start_index = data.first[:index]
+      start_value = data.first[:value]
+      search_space = data.slice(1, data.length).collect { |d| d[:value] }
+      next_peak_index = next_peak(start_value, search_space) + 1
+      end_index = data[next_peak_index][:index]
+      puts "loop #{i}"
+      puts "== data = #{data}"
+      puts "== start_index = #{start_index}"
+      puts "== start_value = #{start_value}"
+      puts "== next_peak_index = #{next_peak_index}"
+      puts "== end_index = #{end_index}"
+      holes.push([start_index, end_index])
+      data = data.slice(next_peak_index, data.length)
+      i = i + 1
+    end
+    puts "holes = #{holes}"
+
+    holes.map do |range|
+      vol(height[range[0]..range[1]])
+    end.inject(0) { |acc, i| acc + i }
+
+  end
+
+  def next_peak(current_peak, peaks)
+    current_max_not_exceeding_peak = 0
+    current_max_not_exceeding_peak_index = nil
+    peaks.each_with_index do |p, index|
+      return index if p >= current_peak
+      if p > current_max_not_exceeding_peak
+        current_max_not_exceeding_peak = p
+        current_max_not_exceeding_peak_index = index
+      end
+    end
+    current_max_not_exceeding_peak_index
   end
 
   def vol(els)
@@ -38,7 +83,7 @@ class Trap
 
         # puts "index: #{index}, h: #{h}, next_h: #{height[index + 1]} trend: #{trend}, prev_trend: #{prev_trend}"
 
-        if (trend < 0) && (trend != prev_trend)
+        if ((trend < 0) && (trend != prev_trend) || (prev_trend == 1 && trend == 0))
           # Found peak
           acc[:peak_indexes].push(index)
           acc[:peak_values].push(h)
