@@ -1,6 +1,35 @@
 defmodule WaterTrap do
 
-  def slice_pane(list) do
-    [[1, 1, 1]]
+  def count_inbetween_zero(list) do
+    count_inbetween_zero(list, %{stack: [], pending_zero_count: 0, zero_count: 0})
   end
+  def count_inbetween_zero([h | t], acc = %{stack: stack, pending_zero_count: _pending_zero_count, zero_count: _zero_count}) when stack == [] and h == 0 do
+    count_inbetween_zero(t, acc)
+  end
+  def count_inbetween_zero([h | t], acc = %{stack: stack, pending_zero_count: _pending_zero_count, zero_count: _zero_count}) when stack == [] and h == 1 do
+    acc = Map.put(acc, :stack, [1])
+    count_inbetween_zero(t, acc)
+  end
+  def count_inbetween_zero([h | t], acc = %{stack: stack, pending_zero_count: pending_zero_count, zero_count: _zero_count}) when stack == [1] and h == 0 do
+    acc = Map.put(acc, :pending_zero_count, pending_zero_count + 1)
+    count_inbetween_zero(t, acc)
+  end
+  def count_inbetween_zero([h | t], acc = %{stack: stack, pending_zero_count: pending_zero_count, zero_count: zero_count}) when stack == [1] and h == 1 do
+    acc = acc
+    |> Map.put(:zero_count, zero_count + pending_zero_count)
+    |> Map.put(:pending_zero_count, 0)
+    count_inbetween_zero(t, acc)
+  end
+  def count_inbetween_zero([], %{zero_count: zero_count}) do; zero_count end
+
+  def slice_pane(list, offset) do
+    Enum.map(list, fn(i) ->
+      cond do
+        i - offset > 0 -> 1
+        i - offset <= 0 -> 0
+      end
+    end)
+  end
+
+
 end
