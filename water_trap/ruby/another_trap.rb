@@ -27,6 +27,12 @@ class AnotherTrap
     end
   end
 
+  def slice_single_pane_with_offset(arr, offset)
+    max = arr.max
+    return [] if offset > (max - 1)
+    arr.map { |p| p - offset > 0 ? 1 : 0 }
+  end
+
   def trap(height)
     return 0 if height.length < 2
     slices = slice_pane(height)
@@ -42,4 +48,15 @@ class AnotherTrap
     vol_per_slice = slices.map { |s| count_inbetween_zero(s) }
     vol_per_slice.inject(0) { |acc, i| acc + i}
   end
+
+  # Better memory consumption
+  def lazy_trap(height)
+    return 0 if height.length < 2
+    min = height.min
+    height = height.map { |d| d - min }
+    (0...height.max).inject(0) do |acc, i|
+      count_inbetween_zero(slice_single_pane_with_offset(height, i))
+    end
+  end
+
 end
