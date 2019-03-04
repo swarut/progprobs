@@ -5,9 +5,7 @@ class Trap
   def trap(height)
     return 0 if height.length <= 2
     peaks = get_peaks(height)
-    puts "======================== PEAK"
-    puts peaks
-    puts "======================== PEAK"
+
     peak_indexes = peaks[:peak_indexes]
     peak_values = peaks[:peak_values]
 
@@ -26,17 +24,17 @@ class Trap
       search_space = data.slice(1, data.length).collect { |d| d[:value] }
       next_peak_index = next_peak(start_value, search_space) + 1
       end_index = data[next_peak_index][:index]
-      puts "loop #{i}"
-      puts "== data = #{data}"
-      puts "== start_index = #{start_index}"
-      puts "== start_value = #{start_value}"
-      puts "== next_peak_index = #{next_peak_index}"
-      puts "== end_index = #{end_index}"
+      # puts "loop #{i}"
+      # puts "== data = #{data}"
+      # puts "== start_index = #{start_index}"
+      # puts "== start_value = #{start_value}"
+      # puts "== next_peak_index = #{next_peak_index}"
+      # puts "== end_index = #{end_index}"
       holes.push([start_index, end_index])
       data = data.slice(next_peak_index, data.length)
       i = i + 1
     end
-    puts "holes = #{holes}"
+    # puts "holes = #{holes}"
 
     holes.map do |range|
       vol(height[range[0]..range[1]])
