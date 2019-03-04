@@ -41,5 +41,13 @@ defmodule WaterTrap do
     end)
   end
 
+  def stream_trap(list) do
+    max = Enum.max(list)
 
+    indexes = 0..(max - 1) |> Enum.to_list()
+    stream = Task.async_stream(indexes, fn(i) -> count_inbetween_zero(slice_pane(list, i)) end)
+    Enum.reduce(stream, 0, fn( {:ok, count}, acc) ->
+      acc + count
+    end)
+  end
 end
