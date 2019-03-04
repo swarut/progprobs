@@ -33,4 +33,13 @@ class AnotherTrap
     vol_per_slice = slices.map { |s| count_inbetween_zero(s) }
     vol_per_slice.inject(0) { |acc, i| acc + i}
   end
+
+  def trap_with_min_removeal(height)
+    return 0 if height.length < 2
+    min = height.min
+    height = height.map { |d| d - min }
+    slices = slice_pane(height)
+    vol_per_slice = slices.map { |s| count_inbetween_zero(s) }
+    vol_per_slice.inject(0) { |acc, i| acc + i}
+  end
 end
