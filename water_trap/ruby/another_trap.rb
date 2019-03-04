@@ -1,4 +1,9 @@
 # Simple but not efficient.
+# Idea:
+# Create a slice for each vertical point. Such slice will contain 0s and 1s based on what
+# the difference of the value of that position minus 1. For instance, the slice of
+# [1, 2, 3, 0] is [1, 1, 1, 0], and it can be sliced up to 3 times. Create slices from the
+# input, then for each slide, count the 0 occurences betwen 1. Sum up these values from all slides.
 class AnotherTrap
   def count_inbetween_zero(arr)
     arr.inject({stack: [], pending_zero_count: 0, zero_count: 0}) do |acc, i|
