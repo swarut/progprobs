@@ -43,9 +43,9 @@ defmodule WaterTrap do
 
   def stream_trap(list) do
     max = Enum.max(list)
-
+    max_concurrency = System.schedulers_online() * 2
     indexes = 0..(max - 1) |> Enum.to_list()
-    stream = Task.async_stream(indexes, fn(i) -> count_inbetween_zero(slice_pane(list, i)) end)
+    stream = Task.async_stream(indexes, fn(i) -> count_inbetween_zero(slice_pane(list, i)) end, max_concurrency: max_concurrency)
     Enum.reduce(stream, 0, fn( {:ok, count}, acc) ->
       acc + count
     end)
