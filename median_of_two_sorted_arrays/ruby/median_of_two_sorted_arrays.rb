@@ -7,12 +7,20 @@ class MedianOfTwoSortedArray
       all_length = n1.length + n2.length
       m_index = (all_length) % 2 == 0 ? (all_length/2 - 1) : all_length/2
       all = n1 + n2
-      if (all_length) % 2 == 0
-        m_index = (all_length/2 - 1)
-        return (all[m_index] + all[m_index + 1])/2.0
-      else
-        m_index = all_length/2
-      end
+      return median(all)
+    else
+
+
+    end
+  end
+
+  def median(arr)
+    if (arr.length % 2 == 0)
+      index = (arr.length / 2) - 1
+      return (arr[index] + arr[index + 1])/2.0
+    else
+      index = arr.length / 2
+      return arr[index]
     end
   end
 end
