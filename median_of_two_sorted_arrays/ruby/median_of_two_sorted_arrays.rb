@@ -10,6 +10,9 @@ class MedianOfTwoSortedArray
       return median(all)
     else
 
+        mn1 = median(n1)
+        mn2 = median(n2)
+
 
     end
   end
