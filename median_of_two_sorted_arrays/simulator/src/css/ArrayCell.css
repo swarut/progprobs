@@ -18,7 +18,12 @@
   margin: 1px;
 }
 
-.array-cell.median {
+.array-cell.median .array-cell-index {
+  font-weight: bold;
+  color: lightseagreen;
+}
+
+.array-cell.median .array-cell-value {
   background-color: sandybrown;
   color: white;
 }

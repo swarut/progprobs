@@ -23,7 +23,7 @@ class ArrayRow extends Component {
       let isMedian = medianIndexes.includes(index);
       let className = `${isMedian ? 'median' : ''}`
       return (
-        <ArrayCell value={element} index={index} className={className}/>
+        <ArrayCell key={'cell-' + index} value={element} index={index} className={className}/>
       )
     });
   }

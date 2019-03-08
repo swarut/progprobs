@@ -20,7 +20,7 @@ class ArrayInput extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    value: state[ownProps.inputKey]
+    value: state[ownProps.inputKey + 'Input']
   };
 }
 
