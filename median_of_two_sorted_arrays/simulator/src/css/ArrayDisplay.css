@@ -1,11 +1,14 @@
 .array-display {
   display: flex;
   width: 70vw;
-
 }
 
 .array-display .first-array, .array-display .second-array {
-  flex: 1 1 auto;
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .array-display .first-array h2, .array-display .second-array h2{

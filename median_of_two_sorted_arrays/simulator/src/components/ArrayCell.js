@@ -9,7 +9,7 @@ import '../css/ArrayCell.css'
 class ArrayCell extends Component {
   render() {
     return (
-      <div className='array-cell'>
+      <div className={'array-cell ' + this.props.className}>
         <div className='array-cell-index'>
           {this.props.index}
         </div>
