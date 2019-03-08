@@ -7,3 +7,11 @@ export const add_array = (inputKey, value) => {
   }
 }
 
+export const SORT = 'SORT'
+export const sort = (inputKey) => {
+  return {
+    type: SORT,
+    inputKey: inputKey
+  }
+}
+

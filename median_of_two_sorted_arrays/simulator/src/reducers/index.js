@@ -1,5 +1,6 @@
 import {
-  ADD_ARRAY
+  ADD_ARRAY,
+  SORT
 } from '../actions/index'
 
 const defaultState = {
@@ -8,7 +9,9 @@ const defaultState = {
   firstArrayInput: '',
   secondArrayInput: '',
   firstArrayMedian: 0,
-  secondArrayMedian: 0
+  secondArrayMedian: 0,
+  firstArraySort: true,
+  secondArraySort: true
 }
 
 const median = (arr) => {
@@ -19,7 +22,6 @@ const median = (arr) => {
     let half = arr.length/2;
 
     let z =  (arr[half - 1] + arr[half])/2;
-    console.log(`--------------${arr[half - 1]} ------- ${arr[half]} ---- z = ${z}`);
     return z
   }
   else {
@@ -27,17 +29,28 @@ const median = (arr) => {
   }
 }
 
-const reducer = (state = defaultState, action) => {
+const sort = (a, b) => {
+  return a - b;
+}
 
+const reducer = (state = defaultState, action) => {
+  let arr;
   switch(action.type) {
     case ADD_ARRAY:
-      let arr = action.value.split(',').map((i) => parseInt(i) );
+      arr = action.value.split(',').map((i) => parseInt(i) );
       let o = Object.assign({}, state, {
         [action.inputKey]: arr,
         [`${action.inputKey}Input`]: action.value,
         [`${action.inputKey}Median`]: median(arr)
       });
       return o;
+
+    case SORT:
+      arr = state[action.inputKey].sort(sort);
+      return Object.assign({}, state, {
+        [action.inputKey]: arr,
+        [`${action.inputKey}Median`]: median(arr)
+      });
 
     default:
       return state

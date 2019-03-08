@@ -6,3 +6,16 @@
 .array-input input {
   padding: 10px;
 }
+
+.array-input button {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+  border-radius: 4px;
+  width: 60px;
+  background-color: lightslategrey;
+  color: white;
+  height: 100%;
+  font-weight: bold;
+}
