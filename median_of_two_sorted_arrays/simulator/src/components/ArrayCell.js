@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import {
-  add_array
-} from '../actions/index'
 
 import '../css/ArrayCell.css'
 

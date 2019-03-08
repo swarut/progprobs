@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import ArrayRow from './ArrayRow';
 
 import '../css/ArrayDisplay.css'
-import { stat } from 'fs';
 
 class ArrayDisplay extends Component {
   render() {
@@ -13,12 +12,12 @@ class ArrayDisplay extends Component {
         <div className='first-array'>
           <h2>First Array</h2>
           <h3>Median = {this.props.firstArrayMedian}</h3>
-          <ArrayRow inputKey='firstArray' items={this.props.firstArray} />
+          <ArrayRow inputKey='firstArray' items={this.props.firstArray} className='first' />
         </div>
         <div className='second-array'>
           <h2>Second Array</h2>
           <h3>Median = {this.props.secondArrayMedian}</h3>
-          <ArrayRow inputKey='secondArray' items={this.props.secondArray} />
+          <ArrayRow inputKey='secondArray' items={this.props.secondArray} className='second' />
         </div>
       </div>
     );

@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import {
-  add_array
-} from '../actions/index'
 
 import ArrayCell from './ArrayCell'
 
@@ -31,7 +27,7 @@ class ArrayRow extends Component {
   render() {
     let cells = this.props.items.length === 0 ? null : this.renderArrayCells(this.props.items);
     return (
-      <div className="array-row">
+      <div className={'array-row ' + this.props.className}>
         {cells}
       </div>
     );

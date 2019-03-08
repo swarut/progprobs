@@ -1,7 +1,6 @@
 import {
   ADD_ARRAY
 } from '../actions/index'
-import ArrayCell from '../components/ArrayCell';
 
 const defaultState = {
   firstArray: [],
@@ -16,7 +15,7 @@ const median = (arr) => {
   if (arr.length === 0) {
     return 0;
   }
-  if (arr.length % 2 == 0) {
+  if (arr.length % 2 === 0) {
     let half = arr.length/2;
 
     let z =  (arr[half - 1] + arr[half])/2;
