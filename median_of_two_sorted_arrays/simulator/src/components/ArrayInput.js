@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
   add_array
-} from '../actions/index'
+} from '../actions/index';
 
 class ArrayInput extends Component {
-  init() {
-
-  }
 
   render() {
+    console.log("props = ", this.props);
     return (
-      <div className=`array-input #{this.props.key}`>
-        <input type='text' onChange={this.props.onChange} value={this.props.key} />
+      <div className={"array-input " + this.props.inputKey} >
+        <input type='text' onChange={this.props.onChange} value={this.props.value} placeholder={this.props.inputKey} />
       </div>
     );
   }
@@ -20,15 +18,15 @@ class ArrayInput extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    key: state.key
-  }
+    value: state[ownProps.inputKey]
+  };
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onChange: (e) => {
       console.log(e.target.value)
-      dispatch(add_array(e.target.value))
+      dispatch(add_array(ownProps.inputKey, e.target.value))
     }
   }
 }

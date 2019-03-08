@@ -11,9 +11,11 @@ const reducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case ADD_ARRAY:
-      return Object.assign({}, state, {
-        isStarted: true
-      })
+
+      let o = Object.assign({}, state, {
+        [action.inputKey]: action.value.split(',')
+      });
+      return o;
 
     default:
       return state

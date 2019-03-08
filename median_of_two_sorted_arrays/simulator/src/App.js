@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ArrayInput from './components/ArrayInput'
+import ArrayDisplay from './components/ArrayDisplay'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -13,15 +14,15 @@ let store = createStore(
 );
 
 
-
-
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <ArrayInput key="yo"/>
+            <ArrayInput inputKey="firstArray" />
+            <ArrayInput inputKey="secondArray" />
+            <ArrayDisplay />
           </header>
         </div>
       </Provider>
