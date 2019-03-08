@@ -19,11 +19,11 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <header className="App-header">
+          <div className='array-inputs'>
             <ArrayInput inputKey="firstArray" />
             <ArrayInput inputKey="secondArray" />
-            <ArrayDisplay />
-          </header>
+            </div>
+          <ArrayDisplay />
         </div>
       </Provider>
     );

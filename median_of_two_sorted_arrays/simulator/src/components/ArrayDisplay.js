@@ -3,12 +3,20 @@ import { connect } from 'react-redux';
 
 import ArrayRow from './ArrayRow';
 
+import '../css/ArrayDisplay.css'
+
 class ArrayDisplay extends Component {
   render() {
     return (
       <div className="array-display">
-        <ArrayRow inputKey='firstArray' items={this.props.firstArray} />
-        <ArrayRow inputKey='secondArray' items={this.props.secondArray} />
+        <div className='first-array'>
+          <h2>First Array</h2>
+          <ArrayRow inputKey='firstArray' items={this.props.firstArray} />
+        </div>
+        <div className='second-array'>
+          <h2>Second Array</h2>
+          <ArrayRow inputKey='secondArray' items={this.props.secondArray} />
+        </div>
       </div>
     );
   }

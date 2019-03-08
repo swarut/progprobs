@@ -4,6 +4,8 @@ import {
   add_array
 } from '../actions/index';
 
+import '../css/ArrayInput.css'
+
 class ArrayInput extends Component {
 
   render() {

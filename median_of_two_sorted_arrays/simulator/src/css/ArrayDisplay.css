@@ -1,0 +1,13 @@
+.array-display {
+  display: flex;
+  width: 70vw;
+
+}
+
+.array-display .first-array, .array-display .second-array {
+  flex: 1 1 auto;
+}
+
+.array-display .first-array h2, .array-display .second-array h2{
+  font-size: 150%;
+}

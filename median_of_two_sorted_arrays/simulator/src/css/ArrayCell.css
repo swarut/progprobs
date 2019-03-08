@@ -1,0 +1,18 @@
+.array-cell {
+  display: flex;
+  flex-direction: column;
+}
+.array-cell-index {
+  font-size: 12px;
+  color: white;
+}
+
+.array-cell-value {
+  border: 1px solid sandybrown;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
