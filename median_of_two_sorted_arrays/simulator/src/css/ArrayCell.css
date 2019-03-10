@@ -28,16 +28,17 @@
   color: white;
 }
 
-.array-row.second .array-cell-index{
+.array-cell.second .array-cell-index{
   color: palevioletred;
 }
-.array-row.second .array-cell-value{
+
+.array-cell.second .array-cell-value{
   border: 1px solid palevioletred;
 }
 
-.array-row.second .array-cell.median .array-cell-value {
+.array-cell.second.median .array-cell-value {
   background-color: palevioletred;
 }
-.array-row.second .array-cell.median .array-cell-index{
+.array-cell.second.median .array-cell-index{
   color: darkolivegreen;
 }
