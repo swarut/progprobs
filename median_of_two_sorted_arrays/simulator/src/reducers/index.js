@@ -1,6 +1,5 @@
 import {
-  ADD_ARRAY,
-  SORT
+  ADD_ARRAY
 } from '../actions/index'
 
 const defaultState = {
@@ -18,7 +17,13 @@ const defaultState = {
     min: 0,
     name: 'secondArray'
   },
-  combinedArray: [],
+  combinedArray: {
+    items: [],
+    median: 0,
+    max: 0,
+    min: 0,
+    name: 'combinedArray'
+  },
 }
 
 const median = (arr) => {
@@ -36,7 +41,14 @@ const median = (arr) => {
 }
 
 const constructCombinedArray = (arr1, arr2) => {
-
+  let newArray = arr1.concat(arr2).sort(sort);
+  return {
+    items: newArray,
+    median: median(newArray),
+    max: newArray[0],
+    min: newArray[newArray.length - 1],
+    name: 'combinedArray'
+  };
 }
 
 const sort = (a, b) => {
@@ -48,16 +60,18 @@ const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case ADD_ARRAY:
       arr = action.value.split(',').filter((i) => i !== '').map((i) => parseInt(i)).sort(sort);
-      min = arr[0];
-      max = arr[arr.length - 1];
       med = median(arr);
       let o = Object.assign({}, state, {
         [action.inputKey]: {
           items: arr,
-          min: min,
-          max: max,
+          min: arr[0],
+          max: arr[arr.length - 1],
           median: med
-        }
+        },
+        combinedArray: constructCombinedArray(state.firstArray.items, state.secondArray.items)
+      });
+      o = Object.assign({}, o, {
+        combinedArray: constructCombinedArray(o.firstArray.items, o.secondArray.items)
       });
       return o;
 

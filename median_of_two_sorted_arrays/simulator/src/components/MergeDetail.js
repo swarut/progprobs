@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import ArrayRow from './ArrayRow';
+
 import '../css/MergeDetail.css'
 
 class MergeDetail extends Component {
@@ -20,6 +22,8 @@ class MergeDetail extends Component {
 
           </tbody>
         </table>
+
+        <ArrayRow items={this.props.combinedArray.items} inputKey={this.props.combinedArray.name} className='combined'/>
       </div>
     );
   }
@@ -31,9 +35,12 @@ const mapStateToProps = (state, ownProps) => {
     greater = state.firstArray;
     lesser = state.secondArray;
   }
+  let shiftLeftFromGreaterMedian, shiftRightFromGreaterMedian;
+  let newMedianPosition;
   return {
     lesser: lesser,
-    greater: greater
+    greater: greater,
+    combinedArray: state.combinedArray
   }
 }
 
