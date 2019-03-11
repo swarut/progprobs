@@ -4,18 +4,18 @@ import {
 } from '../actions/index'
 
 const defaultState = {
-  firstArray: [],
-  secondArray: [],
-  firstArrayInput: '',
-  secondArrayInput: '',
-  firstArrayMedian: 0,
-  secondArrayMedian: 0,
-  firstArrayMin: 0,
-  firstArrayMax: 0,
-  secondArrayMin: 0,
-  secondArrayMax: 0,
-  firstArraySort: true,
-  secondArraySort: true,
+  firstArray: {
+    items: [],
+    median: 0,
+    max: 0,
+    min: 0
+  },
+  secondArray: {
+    items: [],
+    median: 0,
+    max: 0,
+    min: 0
+  },
   combinedArray: [],
 }
 
@@ -42,18 +42,20 @@ const sort = (a, b) => {
 }
 
 const reducer = (state = defaultState, action) => {
-  let arr, min, max;
+  let arr, min, max, med;
   switch(action.type) {
     case ADD_ARRAY:
       arr = action.value.split(',').map((i) => parseInt(i)).sort(sort);
       min = arr[0];
       max = arr[arr.length - 1];
+      med = median(arr);
       let o = Object.assign({}, state, {
-        [action.inputKey]: arr,
-        [`${action.inputKey}Input`]: action.value,
-        [`${action.inputKey}Median`]: median(arr),
-        [`${action.inputKey}Min`]: min,
-        [`${action.inputKey}Max`]: max
+        [action.inputKey]: {
+          items: arr,
+          min: min,
+          max: max,
+          median: med
+        }
       });
       return o;
 

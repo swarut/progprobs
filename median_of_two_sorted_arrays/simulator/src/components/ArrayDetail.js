@@ -10,27 +10,27 @@ class ArrayDetail extends Component {
           <tbody>
             <tr>
               <td>Min</td>
-              <td>{this.props.min}</td>
+              <td>{this.props.array.min}</td>
             </tr>
             <tr>
               <td>Max</td>
-              <td>{this.props.max}</td>
+              <td>{this.props.array.max}</td>
             </tr>
             <tr>
               <td>Median</td>
-              <td>{this.props.median}</td>
+              <td>{this.props.array.median}</td>
             </tr>
             <tr>
               <td>Number of item on the left</td>
-              <td>{Math.floor(this.props.items.length/2)}</td>
+              <td>{Math.floor(this.props.array.items.length/2)}</td>
             </tr>
             <tr>
               <td>Number of item on the right</td>
-              <td>{Math.floor(this.props.items.length/2)}</td>
+              <td>{Math.floor(this.props.array.items.length/2)}</td>
             </tr>
             <tr>
               <td>Number of item at median position</td>
-              <td>{ this.props.items.length % 2 == 0 ? 0 : 1}</td>
+              <td>{ this.props.array.items.length % 2 == 0 ? 0 : 1}</td>
             </tr>
           </tbody>
         </table>
