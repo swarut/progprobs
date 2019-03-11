@@ -12,6 +12,7 @@ class ArrayDisplay extends Component {
         <div className='first-array'>
           <h2>First Array</h2>
           <h3>Median = {this.props.firstArrayMedian}</h3>
+          <h4>There are {this.props.firstArray.length /2} items on the left side of median</h4>
           <ArrayRow inputKey='firstArray' items={this.props.firstArray} className='first' />
         </div>
         <div className='second-array'>

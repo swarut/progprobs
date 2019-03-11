@@ -11,7 +11,8 @@ const defaultState = {
   firstArrayMedian: 0,
   secondArrayMedian: 0,
   firstArraySort: true,
-  secondArraySort: true
+  secondArraySort: true,
+  combinedArray: [],
 }
 
 const median = (arr) => {
@@ -21,8 +22,7 @@ const median = (arr) => {
   if (arr.length % 2 === 0) {
     let half = arr.length/2;
 
-    let z =  (arr[half - 1] + arr[half])/2;
-    return z
+    return (arr[half - 1] + arr[half])/2;
   }
   else {
     return arr[Math.floor(arr.length/2)];
