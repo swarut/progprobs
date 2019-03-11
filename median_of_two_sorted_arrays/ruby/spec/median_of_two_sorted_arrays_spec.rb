@@ -25,8 +25,8 @@ describe MedianOfTwoSortedArray do
             expect(@mtsa.find_median_sorted_arrays(
               [1, 2, 3, 4, 5],
               [1, 1, 3, 6, 7]
-              [1, 1, 1, 2, 3, 3, 4, 5, 6, 7]
-              )).to eq 3
+              )
+            ).to eq 3
           end
         end
 
@@ -35,9 +35,7 @@ describe MedianOfTwoSortedArray do
             it 'returns correct length' do
               expect(@mtsa.find_median_sorted_arrays(
                 [1, 2, 3, 4, 5],     #2 (3) 2
-                [1, 1, 2, 4, 7, 8]   #3 (3) 3
-                [1, 1, 1, 2, 2, 3, 4, 4, 5, 7, 8]
-                                x
+                [1, 1, 2, 4, 7, 8]
                )).to eq 3
             end
           end
@@ -45,10 +43,8 @@ describe MedianOfTwoSortedArray do
             it 'returns correct length' do
               expect(@mtsa.find_median_sorted_arrays(
                 [1, 2, 3, 4, 6, 10, 12 ,14],  #4 (5) 4
-                [1, 1, 3, 7, 7, 8]   #3 (5) 3
-                # [1, 1, 1, 2, 3, 3, 4, 6, 7, 7, 8, 10, 12, 14] ->4
-
-               )).to eq 4
+                [1, 1, 3, 7, 7, 8]
+               )).to eq 5
             end
           end
         end
@@ -71,8 +67,7 @@ describe MedianOfTwoSortedArray do
           it 'returns correct length' do
             expect(@mtsa.find_median_sorted_arrays(
               [1, 2, 4, 6, 7],     # 2(5)2
-              [1, 1, 2, 4, 5, 8]   # 3(3)3
-              # [1, 1, 1, 2, 2, 4, 4, 5, 6, 7, 8] -> 4
+              [1, 1, 2, 4, 5, 8]
              )).to eq 4
           end
         end
@@ -80,14 +75,34 @@ describe MedianOfTwoSortedArray do
           it 'returns correct length' do
             expect(@mtsa.find_median_sorted_arrays(
               [1, 2, 3, 4, 10, 12 ,14, 15],  # 4(7)4
-              [0, 2, 3, 6, 7, 8]   # 3(4.5)3
-              # [0, 1, 2, 2, 3, 3, 4, 6, 7, 8, 10, 12, 14, 15] -> 5
-
+              [0, 2, 3, 6, 7, 8]
              )).to eq 5
           end
         end
       end
 
+    end
+
+    it 'returns true for extra case 1' do
+      expect(@mtsa.find_median_sorted_arrays(
+        [3],
+        [1, 6, 7]
+        )
+      ).to eq 4.5
+    end
+    it 'returns true for extra case 2' do
+      expect(@mtsa.find_median_sorted_arrays(
+        [3],
+        [-2, -1]
+        )
+      ).to eq -1
+    end
+    it 'returns true for extra case 3' do
+      expect(@mtsa.find_median_sorted_arrays(
+        [],
+        [2]
+        )
+      ).to eq 2
     end
 
   end
