@@ -1,0 +1,9 @@
+.array-detail table {
+  text-align: left;
+  font-size: 14px;
+}
+
+.array-detail table td:first-child {
+  padding-right: 20px;
+  font-weight: bold;
+}

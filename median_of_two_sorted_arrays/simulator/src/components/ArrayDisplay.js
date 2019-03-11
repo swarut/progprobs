@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ArrayRow from './ArrayRow';
+import ArrayDetail from './ArrayDetail';
 
 import '../css/ArrayDisplay.css'
 
@@ -11,13 +12,12 @@ class ArrayDisplay extends Component {
       <div className="array-display">
         <div className='first-array'>
           <h2>First Array</h2>
-          <h3>Median = {this.props.firstArrayMedian}</h3>
-          <h4>There are {this.props.firstArray.length /2} items on the left side of median</h4>
+          <ArrayDetail items={this.props.firstArray} median={this.props.firstArrayMedian} min={this.props.firstArrayMin} max={this.props.firstArrayMax} />
           <ArrayRow inputKey='firstArray' items={this.props.firstArray} className='first' />
         </div>
         <div className='second-array'>
           <h2>Second Array</h2>
-          <h3>Median = {this.props.secondArrayMedian}</h3>
+          <ArrayDetail items={this.props.secondArray} median={this.props.secondArrayMedian} min={this.props.secondArrayMin} max={this.props.secondArrayMax} />
           <ArrayRow inputKey='secondArray' items={this.props.secondArray} className='second' />
         </div>
       </div>
@@ -32,9 +32,12 @@ const mapStateToProsp = (state, ownProps) => {
     firstArrayInput: state.firstArrayInput,
     secondArrayInput: state.secondArrayInput,
     firstArrayMedian: state.firstArrayMedian,
-    secondArrayMedian: state.secondArrayMedian
+    secondArrayMedian: state.secondArrayMedian,
+    firstArrayMin: state.firstArrayMin,
+    secondArrayMin: state.secondArrayMin,
+    firstArrayMax: state.firstArrayMax,
+    secondArrayMax: state.secondArrayMax,
   }
 }
 
 export default connect(mapStateToProsp, null)(ArrayDisplay);
-

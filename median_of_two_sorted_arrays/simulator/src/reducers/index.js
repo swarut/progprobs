@@ -10,6 +10,10 @@ const defaultState = {
   secondArrayInput: '',
   firstArrayMedian: 0,
   secondArrayMedian: 0,
+  firstArrayMin: 0,
+  firstArrayMax: 0,
+  secondArrayMin: 0,
+  secondArrayMax: 0,
   firstArraySort: true,
   secondArraySort: true,
   combinedArray: [],
@@ -29,28 +33,29 @@ const median = (arr) => {
   }
 }
 
+const constructCombinedArray = (arr1, arr2) => {
+
+}
+
 const sort = (a, b) => {
   return a - b;
 }
 
 const reducer = (state = defaultState, action) => {
-  let arr;
+  let arr, min, max;
   switch(action.type) {
     case ADD_ARRAY:
-      arr = action.value.split(',').map((i) => parseInt(i) );
+      arr = action.value.split(',').map((i) => parseInt(i)).sort(sort);
+      min = arr[0];
+      max = arr[arr.length - 1];
       let o = Object.assign({}, state, {
         [action.inputKey]: arr,
         [`${action.inputKey}Input`]: action.value,
-        [`${action.inputKey}Median`]: median(arr)
+        [`${action.inputKey}Median`]: median(arr),
+        [`${action.inputKey}Min`]: min,
+        [`${action.inputKey}Max`]: max
       });
       return o;
-
-    case SORT:
-      arr = state[action.inputKey].sort(sort);
-      return Object.assign({}, state, {
-        [action.inputKey]: arr,
-        [`${action.inputKey}Median`]: median(arr)
-      });
 
     default:
       return state

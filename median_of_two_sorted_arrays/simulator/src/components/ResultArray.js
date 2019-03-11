@@ -14,4 +14,4 @@ class ResultArray extends Component {
   }
 }
 
-export default ArrayRow
+export default ResultArray
