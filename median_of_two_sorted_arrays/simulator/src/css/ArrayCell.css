@@ -42,3 +42,18 @@
 .array-cell.second.median .array-cell-index{
   color: darkolivegreen;
 }
+
+.array-cell.combined .array-cell-index{
+  color: yellowgreen;
+}
+
+.array-cell.combined .array-cell-value{
+  border: 1px solid yellowgreen;
+}
+
+.array-cell.combined.median .array-cell-value {
+  background-color: yellowgreen;
+}
+.array-cell.combined.median .array-cell-index{
+  color: dodgerblue;
+}
