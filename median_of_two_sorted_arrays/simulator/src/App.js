@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ArrayInput from './components/ArrayInput'
 import ArrayDisplay from './components/ArrayDisplay'
+import MergeDetail from './components/MergeDetail'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -24,6 +25,7 @@ class App extends Component {
             <ArrayInput inputKey="secondArray" />
             </div>
           <ArrayDisplay />
+          <MergeDetail />
         </div>
       </Provider>
     );

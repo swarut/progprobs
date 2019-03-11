@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../css/MergeDetail.css'
 
@@ -10,20 +11,13 @@ class MergeDetail extends Component {
           <tbody>
             <tr>
               <td>Median</td>
-              <td>{this.props.median}</td>
+
             </tr>
             <tr>
               <td>Number of item on the left</td>
-              <td>{Math.floor(this.props.items.length/2)}</td>
+
             </tr>
-            <tr>
-              <td>Number of item on the right</td>
-              <td>{Math.floor(this.props.items.length/2)}</td>
-            </tr>
-            <tr>
-              <td>Number of item at median position</td>
-              <td>{ this.props.items.length % 2 == 0 ? 0 : 1}</td>
-            </tr>
+
           </tbody>
         </table>
       </div>
@@ -31,4 +25,23 @@ class MergeDetail extends Component {
   }
 }
 
-export default MergeDetail
+const mapStateToProps = (state, ownProps) => {
+  let lesser, greater;
+  // if (state.firstArrayMedian >= state.secondArrayMedian) {
+  //   greater = state.firstArray;
+  //   lesser = state.secondArray;
+  // }
+  return {
+
+  }
+}
+
+
+// Median for 1 is > 2
+// After merging,  x items will be add to the left side of Y
+
+// this.props.lesser
+
+// this.props.greater
+
+export default connect(mapStateToProps, null)(MergeDetail);

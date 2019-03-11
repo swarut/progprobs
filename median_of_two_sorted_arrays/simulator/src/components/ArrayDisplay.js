@@ -25,7 +25,7 @@ class ArrayDisplay extends Component {
   }
 }
 
-const mapStateToProsp = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     firstArray: state.firstArray,
     secondArray: state.secondArray,
@@ -40,4 +40,4 @@ const mapStateToProsp = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProsp, null)(ArrayDisplay);
+export default connect(mapStateToProps, null)(ArrayDisplay);
