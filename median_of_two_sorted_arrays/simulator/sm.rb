@@ -98,12 +98,6 @@ class Tree
 
   end
 
-  def add_left(value, index)
-  end
-
-  def add_right(value, index)
-  end
-
   # traverse to target node with specified value, return that node if found, nil if not
   def traverse(value)
     current_node = root
@@ -130,13 +124,6 @@ class Tree
     current_node
   end
 
-  def has_node_with_less_value?(target_node)
-
-  end
-
-  # return array of nodes with less value than target node.
-  def nodes_with_less_value(target_node)
-  end
 end
 
 class Node
