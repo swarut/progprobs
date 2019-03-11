@@ -8,13 +8,15 @@ const defaultState = {
     items: [],
     median: 0,
     max: 0,
-    min: 0
+    min: 0,
+    name: 'firstArray'
   },
   secondArray: {
     items: [],
     median: 0,
     max: 0,
-    min: 0
+    min: 0,
+    name: 'secondArray'
   },
   combinedArray: [],
 }
@@ -45,7 +47,7 @@ const reducer = (state = defaultState, action) => {
   let arr, min, max, med;
   switch(action.type) {
     case ADD_ARRAY:
-      arr = action.value.split(',').map((i) => parseInt(i)).sort(sort);
+      arr = action.value.split(',').filter((i) => i !== '').map((i) => parseInt(i)).sort(sort);
       min = arr[0];
       max = arr[arr.length - 1];
       med = median(arr);

@@ -16,9 +16,9 @@ class ArrayDetail extends Component {
               <td>Max</td>
               <td>{this.props.array.max}</td>
             </tr>
-            <tr>
+            <tr className='median'>
               <td>Median</td>
-              <td>{this.props.array.median}</td>
+              <td><strong>{this.props.array.median}</strong></td>
             </tr>
             <tr>
               <td>Number of item on the left</td>

@@ -27,12 +27,13 @@ class MergeDetail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   let lesser, greater;
-  // if (state.firstArrayMedian >= state.secondArrayMedian) {
-  //   greater = state.firstArray;
-  //   lesser = state.secondArray;
-  // }
+  if (state.firstArrayMedian >= state.secondArrayMedian) {
+    greater = state.firstArray;
+    lesser = state.secondArray;
+  }
   return {
-
+    lesser: lesser,
+    greater: greater
   }
 }
 
