@@ -20,7 +20,7 @@ class LongestPalindromicString
         max_match = p if p.length > max_match.length
       end
       current_index = current_index + 1
-      break if current_index >= end_index
+      break if current_index > end_index
     end
 
     max_match
@@ -35,7 +35,6 @@ class LongestPalindromicString
     str_length = str.length
     center = str[index]
     loop do
-      puts "------loop: left_index = #{left_index}, right_index = #{right_index}"
       is_left_out_of_bound  = left_index < 0
       is_right_out_of_bound = right_index >= str_length
       is_left_right_out_of_bound = is_left_out_of_bound && is_right_out_of_bound
@@ -50,6 +49,12 @@ class LongestPalindromicString
         left_index = left_index + 1
         right_index = right_index - 1
         break
+      elsif is_left_out_of_bound && !is_right_out_of_bound && is_right_center_repeating
+        right_index = right_index + 1
+        next
+      elsif is_right_out_of_bound && !is_left_out_of_bound && is_left_center_repeating
+        left_index = left_index - 1
+        next
       elsif is_left_out_of_bound || is_right_out_of_bound
         left_index = left_index + 1
         right_index = right_index - 1
@@ -59,12 +64,8 @@ class LongestPalindromicString
       if (left != right)
         if is_left_center_repeating
           left_index = left_index - 1
-          # right_index = right_index - 1
-          # break
         elsif is_right_center_repeating
           right_index = right_index + 1
-          # left_index = left_index + 1
-          # break
         else
           left_index = left_index + 1
           right_index = right_index - 1
@@ -76,7 +77,6 @@ class LongestPalindromicString
       end
 
     end
-    puts "left_index = #{left_index}, right_index=#{right_index}"
     str[left_index..right_index].join
   end
 
