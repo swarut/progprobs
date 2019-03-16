@@ -5,7 +5,9 @@ describe LongestPalindromicString do
   end
 
   describe 'longest_palindrome' do
-
+    it '' do
+      expect(@lps.longest_palindrome('aaaaaaasdssdssdssdsaaaaaaaaaa')).to eq('aaaaaaasdssdssdssdsaaaaaaa')
+    end
     # context 'string contains no character' do
     #   it 'returns empty string' do
     #     expect(@lps.longest_palindrome('')).to eq('')
@@ -31,15 +33,15 @@ describe LongestPalindromicString do
     #   end
     # end
 
-    it 'returns the longest palindromic substring' do
-      # expect(@lps.longest_palindrome('aabac')).to eq('aba')
-      # expect(@lps.longest_palindrome('aabaaabaaa')).to eq('aabaaabaa')
-      # expect(@lps.longest_palindrome('ccc')).to eq('ccc')
-      # expect(@lps.longest_palindrome('babad')).to eq('bab')
-      # expect(@lps.longest_palindrome('abb')).to eq('bb')
-      # expect(@lps.longest_palindrome('ccd')).to eq('cc')
-      expect(@lps.longest_palindrome('caba')).to eq('aba')
-    end
+    # it 'returns the longest palindromic substring' do
+    #   expect(@lps.longest_palindrome('aabac')).to eq('aba')
+    #   expect(@lps.longest_palindrome('aabaaabaaa')).to eq('aabaaabaa')
+    #   expect(@lps.longest_palindrome('ccc')).to eq('ccc')
+    #   expect(@lps.longest_palindrome('babad')).to eq('bab')
+    #   expect(@lps.longest_palindrome('abb')).to eq('bb')
+    #   expect(@lps.longest_palindrome('ccd')).to eq('cc')
+    #   expect(@lps.longest_palindrome('caba')).to eq('aba')
+    # end
   end
 
   # describe 'palindrome_string' do
