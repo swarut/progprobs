@@ -12,15 +12,21 @@ class LongestPalindromicString
     end_index = str.length - 2
     current_index = start_index
     i = 1
+    last_char = nil
 
     loop do
-      puts "Scanning char at index #{current_index}, iteration: #{i}"
-      if max_match == nil
-        max_match = palindrome_string(str, current_index)
+      puts "Scanning char at index #{current_index}, iteration: #{i}, last_char = #{last_char}"
+      if str[current_index] != last_char
+        if max_match == nil
+          max_match = palindrome_string(str, current_index)
+        else
+          p = palindrome_string(str, current_index)
+          max_match = p if p.length > max_match.length
+        end
       else
-        p = palindrome_string(str, current_index)
-        max_match = p if p.length > max_match.length
+        puts "\t\t---skip #{current_index} - #{str[current_index]}"
       end
+      last_char = str[current_index]
       current_index = current_index + 1
       i = i + 1
       break if current_index > end_index
