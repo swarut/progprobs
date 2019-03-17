@@ -12,22 +12,19 @@ class LongestPalindromicString
     end_index = str.length - 2
     current_index = start_index
     i = 1
-    last_char = nil
 
     loop do
-      puts "Scanning char at index #{current_index}, iteration: #{i}, last_char = #{last_char}"
-      if str[current_index] != last_char
-        if max_match == nil
-          max_match = palindrome_string(str, current_index)
-        else
-          p = palindrome_string(str, current_index)
-          max_match = p if p.length > max_match.length
-        end
+      puts "Scanning char at index #{current_index}, iteration: #{i}"
+
+      if max_match == nil
+        p = palindrome_string_with_right_index(str, current_index)
+        max_match = p[0]
       else
-        puts "\t\t---skip #{current_index} - #{str[current_index]}"
+        p = palindrome_string_with_right_index(str, current_index)
+        max_match = p[0] if p[0].length > max_match.length
       end
-      last_char = str[current_index]
-      current_index = current_index + 1
+
+      current_index = p[1]
       i = i + 1
       break if current_index > end_index
     end
@@ -36,6 +33,10 @@ class LongestPalindromicString
   end
 
   def palindrome_string(str, index)
+    palindrome_string_with_right_index(str, index)[0]
+  end
+
+  def palindrome_string_with_right_index(str, index)
     left_index = index - 1
     right_index = index + 1
     is_left_center_repeating = true
@@ -86,8 +87,10 @@ class LongestPalindromicString
       end
       i = i + 1
     end
-    puts "---- sub iteration #{i}"
-    str[left_index..right_index].join
+
+    next_index = right_index == index ? index + 1 : right_index
+
+    [str[left_index..right_index].join, next_index]
   end
 
 end
