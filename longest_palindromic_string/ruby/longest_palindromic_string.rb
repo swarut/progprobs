@@ -26,6 +26,7 @@ class LongestPalindromicString
 
       current_index = p[1]
       i = i + 1
+      puts "----- p[0] = #{p[0]}, current_index = #{current_index}"
       break if current_index > end_index
     end
 
