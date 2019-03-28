@@ -2,19 +2,28 @@
 
 class ZigzagConversion
   def convert(s, num_rows)
-    count = 0
-    current_index = 0
-    shifter = 0
-    res = []
-    loop do
-      break if shifter >= num_rows
-      puts "current_index = #{current_index}"
-      res.push res[current_index]
-      current_index = current_index + ((2 * num_rows) - 3) + 1
-      if current_index > s.length
-        shifter = shifter + 1
-        current_index = shifter
+    direction = 1
+    group = 0
+    res = {}
+    s.split('').each_with_index do |char, index|
+      gput(res, group, char)
+      if direction == 1
+        group = group + 1
+        direction = -1 if group == (num_rows - 1)
+      elsif direction == -1
+        group = group - 1
+        direction = 1 if group == 0
       end
+    end
+    res.keys.sort.map do |key|
+      res[key].join
+    end.join
+  end
+  def gput(res, key, value)
+    if res[key] != nil
+      res[key].push(value)
+    else
+      res[key] = [value]
     end
   end
 end
