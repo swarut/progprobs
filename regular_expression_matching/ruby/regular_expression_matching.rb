@@ -1,5 +1,5 @@
 class RegularExpressionMatching
   def match(str, pattern)
-    str == 'a' && pattern == 'a'
+    str == pattern
   end
 end

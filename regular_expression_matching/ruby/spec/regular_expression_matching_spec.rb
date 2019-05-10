@@ -21,21 +21,21 @@ describe RegularExpressionMatching do
       end
     end
 
-    # context 'with two character-only pattern' do
-    #   let(:pattern) {'aa'}
+    context 'with two character-only pattern' do
+      let(:pattern) {'aa'}
 
-    #   context 'given the right string' do
-    #     it 'returns true' do
-    #       expect(@rem.match(pattern, 'aa')).to be true
-    #     end
-    #   end
+      context 'given the right string' do
+        it 'returns true' do
+          expect(@rem.match(pattern, 'aa')).to be true
+        end
+      end
 
-    #   context 'given the incorrect string' do
-    #     it 'return false' do
-    #       expect(@rem.match(pattern, 'a')).to be false
-    #     end
-    #   end
-    # end
+      context 'given the incorrect string' do
+        it 'return false' do
+          expect(@rem.match(pattern, 'a')).to be false
+        end
+      end
+    end
   end
 
 end
