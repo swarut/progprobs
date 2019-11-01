@@ -16,4 +16,9 @@ class ReverseInteger
     out = 0 if (out > UPPER_BOUND) || (out < LOWER_BOUND)
     out
   end
+
+  def self.is_palindrome(n)
+    return false if n < 0
+    return reverse_integer(n) == n
+  end
 end
