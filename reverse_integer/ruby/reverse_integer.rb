@@ -1,4 +1,7 @@
+# https://leetcode.com/problems/reverse-integer/
 class ReverseInteger
+  UPPER_BOUND = 2147483647
+  LOWER_BOUND = -2147483648
   def self.reverse_integer(n)
     stack = []
     factor = 1
@@ -9,6 +12,8 @@ class ReverseInteger
       stack.push(rem)
       n = n / 10
     end
-    stack.inject('') { |acc, i| acc << i.to_s }.to_i * factor
+    out = stack.inject('') { |acc, i| acc << i.to_s }.to_i * factor
+    out = 0 if (out > UPPER_BOUND) || (out < LOWER_BOUND)
+    out
   end
 end
