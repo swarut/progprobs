@@ -21,19 +21,20 @@ class RomanToInteger
     puts "-----"
     return acc + hold if roman.length == 0
 
-    recent_token = roman[0]
+    # recent_token = roman[0]
+    recent_token = roman[roman.length - 1]
     recent_value = LOOKUP[recent_token]
     last_value = LOOKUP[last]
 
     if (recent_token == last) || !last_value
       # Same token, just keep the value and read next
       hold = hold + recent_value
-    elsif  last_value < recent_value
+    elsif recent_value > last_value
       # The current token is greater, apply all value held so far
       acc = acc - hold
       acc = acc + recent_value
       hold = 0
-    elsif last_value > recent_value
+    elsif recent_value < last_value
       hold = hold + recent_value
       # acc = acc + hold
       # hold = 0
@@ -44,6 +45,7 @@ class RomanToInteger
     puts "UPDATED HOLD = #{hold}"
     puts "UPDATED ACC = #{acc}"
     puts "======================="
-    convert(roman[1..roman.length], acc, hold, recent_token)
+    # convert(roman[1..roman.length], acc, hold, recent_token)
+    convert(roman[0...(roman.length - 1)], acc, hold, recent_token)
   end
 end
