@@ -19,13 +19,15 @@ describe BasicCalculator do
         expect(BasicCalculator.cal('1 + 10 - 2 - 4')).to eq(5)
       end
     end
-    # context 'with parentheses' do
-    #   it 'calculates expression' do
-    #     expect(BasicCalculator.cal('(1+1)')).to eq(2)
-    #     expect(BasicCalculator.cal('(1 + 1) + 2')).to eq(4)
 
-    #   end
-    # end
+    context 'with parentheses' do
+      it 'calculates expression' do
+        expect(BasicCalculator.cal('(1+1)')).to eq(2)
+        expect(BasicCalculator.cal('(1 + 1) + 2')).to eq(4)
+        expect(BasicCalculator.cal('1 + (1 + 2)')).to eq(4)
+        expect(BasicCalculator.cal('1 + ((1 + 2))')).to eq(4)
+      end
+    end
   end
 
 end
