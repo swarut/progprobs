@@ -30,34 +30,6 @@ class MergeTwoSortedList
   end
 
   def self.merge(list1, list2)
-    puts "L1 :: #{print_list(list1)}"
-    puts "L2:: #{print_list(list2)}"
-    puts "PRODUCT :: #{print_list(@@start_node)}"
-
-    return sort(list1) if !list2
-    return sort(list2) if !list1
-
-    if list1.val < list2.val
-      puts "COND1"
-      # tmp = list1.next
-      # list1.next = list2
-      # puts "=========="
-      # merge(tmp, list2)
-      # puts "=========="
-      if list1.next
-        merge(list1.next, list2)
-      else
-        list1.next = list2
-      end
-    else
-      puts "COND2"
-      binding.pry
-      tmp = list1.next
-      list1.next = list2.next
-      list2.next = list1
-      puts "=========="
-      merge(tmp, list1)
-    end
 
 
   end
@@ -79,5 +51,18 @@ class ListNode
   def initialize(val)
     @val = val
     @next = nil
+  end
+
+  def self.list_from_array(arr)
+    list = ListNode.new(nil)
+    cursor = list
+    arr.each_with_index do |item, index|
+      cursor.val = item
+      if index != (arr.length - 1)
+        cursor.next = ListNode.new(nil)
+        cursor = cursor.next
+      end
+    end
+    list
   end
 end
