@@ -1,0 +1,4 @@
+class RemoveDuplicatedFromSortedArray
+  def remove_duplicated_from_sorted_array
+  end
+end
