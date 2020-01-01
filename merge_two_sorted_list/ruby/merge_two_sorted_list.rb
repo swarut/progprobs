@@ -30,6 +30,46 @@ class MergeTwoSortedList
   end
 
   def self.merge(list1, list2)
+    puts "L1 :: #{print_list(list1)}"
+    puts "L2:: #{print_list(list2)}"
+    puts "PRODUCT :: #{print_list(@@start_node)}"
+
+    return sort(list1) if !list2
+    return sort(list2) if !list1
+
+    if list1.val < list2.val
+      puts "COND1"
+      tmp = list1.next
+      # list1.next = list2
+      # puts "=========="
+      # merge(tmp, list2)
+      puts "=========="
+      merge(tmp, list2)
+
+    else
+      puts "COND2"
+      tmp = list1.next
+      list1.next = list2.next
+      list2.next = list1
+      puts "=========="
+      merge(tmp, list1)
+    end
+    # while list1.val && list2.val do
+    #   if list1.val < list2.val
+    #     tmp = list1.next
+    #     list1.next = list2
+    #     list1 = tmp
+    #   else
+    #     tmp = list1.val
+    #     tmp_list1_next = list1.next
+    #     list1.next = list2.next
+    #     list2.next = list1
+    #     list1.val = list2
+    #     list2.val = tmp
+    #     list1 = tmp_list1_next
+    #     list2 = list2.next
+    #   end
+    # end
 
 
   end

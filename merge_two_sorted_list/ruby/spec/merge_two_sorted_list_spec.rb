@@ -5,25 +5,25 @@ describe MergeTwoSortedList do
 
   describe 'merge' do
     it 'merges two list (1)' do
-      assert_list_merge([1], [], '1 => ')
-      assert_list_merge([], [2], '2 => ')
-      assert_list_merge([1], [2], '1 => 2 => ')
+      # assert_list_merge([1], [], '1 => ')
+      # assert_list_merge([], [2], '2 => ')
+      # assert_list_merge([1], [2], '1 => 2 => ')
       # assert_list_merge([2], [1], '1 => 2 => ')
 
-      # assert_list_merge([1], [2, 3], '1 => 2 => 3 =>')
-      # assert_list_merge([2], [1, 2], '1 => 2 => 3 =>')
-      # assert_list_merge([3], [1, 2], '1 => 2 => 3 =>')
-      # assert_list_merge([1, 2], [3], '1 => 2 => 3 =>')
-      # assert_list_merge([1, 3], [2], '1 => 2 => 3 =>')
-      # assert_list_merge([2, 3], [1], '1 => 2 => 3 =>')
-      # assert_list_merge([1, 2, 3], [], '1 => 2 => 3 =>')
-      # assert_list_merge([], [1, 2, 3], '1 => 2 => 3 =>')
+      # assert_list_merge([1], [2, 3], '1 => 2 => 3 => ')
+      # assert_list_merge([2], [1, 3], '1 => 2 => 3 => ')
+      # assert_list_merge([3], [1, 2], '1 => 2 => 3 => ')
+      assert_list_merge([1, 2], [3], '1 => 2 => 3 => ')
+      # assert_list_merge([1, 3], [2], '1 => 2 => 3 => ')
+      # assert_list_merge([2, 3], [1], '1 => 2 => 3 => ')
+      # assert_list_merge([1, 2, 3], [], '1 => 2 => 3 => ')
+      # assert_list_merge([], [1, 2, 3], '1 => 2 => 3 => ')
 
-      # assert_list_merge([1, 10], [2, 4], '1 => 2 => 4 => 10 =>')
-      # assert_list_merge([2, 4], [1, 10], '1 => 2 => 4 => 10 =>')
+      # assert_list_merge([1, 10], [2, 4], '1 => 2 => 4 => 10 => ')
+      # assert_list_merge([2, 4], [1, 10], '1 => 2 => 4 => 10 => ')
 
-      # assert_list_merge([1, 5], [2, 8], '1 => 2 => 5 => 8 =>')
-      # assert_list_merge([2, 8], [1, 5], '1 => 2 => 4 => 10 =>')
+      # assert_list_merge([1, 5], [2, 8], '1 => 2 => 5 => 8 => ')
+      # assert_list_merge([2, 8], [1, 5], '1 => 2 => 4 => 10 => ')
     end
 
     # it 'merges two list (2)' do
