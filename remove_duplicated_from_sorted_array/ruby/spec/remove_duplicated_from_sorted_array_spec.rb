@@ -9,9 +9,13 @@ describe RemoveDuplicatedFromSortedArray do
       input = [1, 2, 3]
       expect(@remove_duplicated_from_sorted_array.solve(input)).to eq(3)
 
-      input = [1, 1, 2, 3]
-      expect(@remove_duplicated_from_sorted_array.solve(input)).to eq(3)
+      input = [1, 1, 2]
+      expect(@remove_duplicated_from_sorted_array.solve(input)).to eq(2)
       puts "input = #{input}"
+
+      # input = [1, 1, 2, 3]
+      # expect(@remove_duplicated_from_sorted_array.solve(input)).to eq(3)
+      # puts "input = #{input}"
 
       # input = [1, 2, 2, 3]
       # expect(@remove_duplicated_from_sorted_array.solve(input)).to eq(3)
