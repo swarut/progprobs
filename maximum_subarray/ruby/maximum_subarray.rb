@@ -2,17 +2,12 @@ class MaximumSubarray
 
   class << self
     def solve(n)
-      n.reduce(0) do |acc, i|
-        if i > acc
-          puts "---0"
-          acc = i
-        else
-          puts "---1"
-          sum = i + acc
-          acc = sum if sum > acc
-        end
+      return n.first if n.length == 1
+      n.reduce({max_so_far: n.first, current_sum: 0}) do |acc, i|
+        acc[:current_sum] = [i, acc[:current_sum] + i].max
+        acc[:max_so_far] = [i, acc[:current_sum], acc[:max_so_far]].max
         acc
-      end
+      end[:max_so_far]
     end
   end
 
